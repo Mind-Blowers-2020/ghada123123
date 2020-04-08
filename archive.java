@@ -18,6 +18,8 @@ public class archive {
     private String date;
 
     private int quantite;
+        private int total;
+
 
     public archive(String nom, int quantite, String date) {
 this.nom=nom;
@@ -26,7 +28,10 @@ this.date=date;
     }
 
     public archive() {
+        
     }
+
+  
 
     public int getId() {
         return id;
@@ -59,18 +64,28 @@ this.date=date;
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+   public int getTotal() {
+        return total;
+    }
 
+    public void setTotal(int total) {
+        this.total = total;
+    }
     @Override
     public String toString() {
         return "commande{" + "id=" + id + ", nom=" + nom + ", date=" + date + ", quantite=" + quantite + '}';
     }
 
-    public archive(int id, String nom, String date, int quantite) {
+    public archive(int id, String nom, String date, int quantite, int total) {
         this.id = id;
         this.nom = nom;
         this.date = date;
         this.quantite = quantite;
+                this.total = total;
+
     }
+
+ 
 
    
     

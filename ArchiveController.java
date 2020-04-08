@@ -79,6 +79,10 @@ public class ArchiveController implements Initializable {
     private Label lblstatut;
     @FXML
     private Button nexttab;
+    @FXML
+    private TableColumn<commande, Integer> txttotal;
+    @FXML
+    private Label lbltotal;
        //public ObservableList<archive>  dataa=FXCollections.observableArrayList();
    public void aficher(MouseEvent event)  {
                      
@@ -88,12 +92,14 @@ public class ArchiveController implements Initializable {
    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-
-          ResultSet rs = connectionn.createStatement().executeQuery("SELECT id,nom,quantite,date from commandes");
+        //int total=0;
+       connectionn = (Connection) connection.conDB();
+      try {
+          ResultSet rs = connectionn.createStatement().executeQuery("SELECT id,nom,quantite,date,total from commandes");
           
            while(rs.next())
-   data.add(new commande(rs.getInt("id"),rs.getString("nom"),rs.getString("date"),rs.getInt("quantite"))) ; 
+   data.add(new commande(rs.getInt("id"),rs.getString("nom"),rs.getString("date"),rs.getInt("quantite"),rs.getInt("total"))) ; 
+            //total += rs.getInt("total");
       } catch (SQLException ex) {
           Logger.getLogger(AfficherController.class.getName()).log(Level.SEVERE, null, ex);
       }
@@ -101,9 +107,10 @@ public class ArchiveController implements Initializable {
 txtnomm.setCellValueFactory(new PropertyValueFactory<>("nom"));
    txtquantitee.setCellValueFactory(new PropertyValueFactory<>("quantite"));
    txtdatee.setCellValueFactory(new PropertyValueFactory<>("date"));
-
+   txttotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+   //lbltotal.setText( String.valueOf(total));
 table.setItems(data);
-
+        
 
     }
 
@@ -132,7 +139,11 @@ saveData();
              {
                  c.setId(rs.getInt(1));
                  c.setNom(rs.getString(2));
+                                  c.setQuantite(rs.getInt(4));
+
                  c.setDate(rs.getString(5));
+                                  c.setTotal(rs.getInt(3));
+
 
                  i++;
                          }
@@ -158,14 +169,15 @@ saveData();
              commande userSelec = (commande) table.getSelectionModel().getSelectedItem();
                     System.out.println("hahahahahahah"+userSelec);
                             c= findCommandeById(userSelec.getId());
-            String st = "INSERT INTO archive ( nom, quantite, date ) VALUES (?,?,?)";
+            String st = "INSERT INTO archive ( nom, quantite, date, total ) VALUES (?,?,?,?)";
             //LocalDate date=txtdatee.getValue();
             preparedStatement = (PreparedStatement) connectionn.prepareStatement(st);
             preparedStatement.setString(1, c.getNom()); 
         
             preparedStatement.setInt(2, c.getQuantite());
             preparedStatement.setString(3, c.getDate())    ;
-           
+                       preparedStatement.setInt(4, c.getTotal())    ;
+
 
             preparedStatement.executeUpdate();
             lblstatut.setTextFill(Color.GREEN);
@@ -203,6 +215,12 @@ saveData();
                     System.err.println(ex.getMessage());
                 }
     }
+
+    @FXML
+    private void nexttableau(MouseEvent event) {
+    }
+
+    
 
 }
 

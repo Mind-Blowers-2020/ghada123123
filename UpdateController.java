@@ -74,6 +74,7 @@ public class UpdateController implements Initializable {
         txtquantite.setText(String.valueOf(c.getQuantite()));
         
         
+        
      
         
         
@@ -81,15 +82,16 @@ public class UpdateController implements Initializable {
     }  
     public boolean Updateeventcours(String nom, String quantite, String date, int id) {
 
-        String req = "UPDATE commandes SET  nom= ? , quantite = ? , date = ?  where id=?;";
+        String req;
+     req = "UPDATE commandes SET  nom= ? , quantite = ? , date = ? , total = ?  where id=?;";
         try {
          preparedStatement = (PreparedStatement) connectionn.prepareStatement(req);
 
             preparedStatement.setString(1, nom);
             preparedStatement.setString(2, quantite);
             preparedStatement.setString(3, date);
-            preparedStatement.setInt(4, id);
-
+            preparedStatement.setInt(5, id);
+            preparedStatement.setInt(4,50*(Integer.parseInt(txtquantite.getText())));
             if (preparedStatement.executeUpdate() != 0) {
                 System.out.println("comande Updated");
             } else {
@@ -117,6 +119,7 @@ public class UpdateController implements Initializable {
                  c.setNom(rs.getString(2));
                  c.setQuantite(rs.getInt(4));
                  c.setDate(rs.getString(5));
+                 c.setTotal(rs.getInt(6));
 
                  i++;
                          }

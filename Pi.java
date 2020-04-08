@@ -15,11 +15,12 @@ import javafx.stage.Stage;
  *
  * @author esprit
  */
+
 public class Pi extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("afficher.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("prodaffich.fxml"));
         
         Scene scene = new Scene(root);
         

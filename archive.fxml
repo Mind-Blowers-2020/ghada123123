@@ -13,6 +13,7 @@
           <TableColumn fx:id="txtnomm" prefWidth="75.0" text="nom" />
           <TableColumn fx:id="txtquantitee" prefWidth="75.0" text="quantite" />
             <TableColumn fx:id="txtdatee" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="txttotal" prefWidth="75.0" text="total" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -21,5 +22,6 @@
       <Button fx:id="btnarchive" layoutX="156.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#archive" prefHeight="31.0" prefWidth="367.0" style="-fx-background-color: #006400;" text="choisir quelle commande vous voulez archivez?" textFill="WHITE" />
       <Label fx:id="lblstatut" layoutX="456.0" layoutY="408.0" prefHeight="21.0" prefWidth="67.0" />
       <Button fx:id="nexttab" layoutX="562.0" layoutY="403.0" mnemonicParsing="false" onAction="#nexttableau" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #006400;" stylesheets="@../styling/fullpackstyling.css" text="voir la liste &gt;&gt;" />
+      <Label fx:id="lbltotal" layoutX="587.0" layoutY="34.0" prefHeight="21.0" prefWidth="113.0" />
    </children>
 </AnchorPane>

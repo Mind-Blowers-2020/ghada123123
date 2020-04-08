@@ -18,7 +18,7 @@
       <TextField fx:id="txtquantite" layoutX="112.0" layoutY="205.0" prefHeight="38.0" prefWidth="222.0" promptText="quantite" />
       <Label fx:id="lblstatut" layoutX="241.0" layoutY="274.0" prefHeight="21.0" prefWidth="119.0" />
 
-      <DatePicker fx:id="txtdatee" layoutX="112.0" layoutY="276.0" prefHeight="39.0" prefWidth="222.0" />
+      <DatePicker fx:id="txtdatee" layoutX="112.0" layoutY="276.0" prefHeight="39.0" prefWidth="222.0" promptText="date aujourd'hui" />
       <AnchorPane layoutX="510.0" layoutY="-13.0" prefHeight="446.0" prefWidth="484.0" style="-fx-background-color: #6B8E23;">
          <children>
             <HBox layoutX="256.0" layoutY="345.0" prefHeight="62.0" prefWidth="175.0" />
@@ -63,5 +63,7 @@
             <Image url="@../images/icons8_Google_Wallet_50px.PNG" />
          </image>
       </ImageView>
+      <Label fx:id="lblstatu" layoutX="319.0" layoutY="364.0" prefHeight="21.0" prefWidth="164.0" />
+      <Label fx:id="lblstatut" layoutX="343.0" layoutY="402.0" prefHeight="21.0" prefWidth="84.0" />
     </children>
 </AnchorPane>

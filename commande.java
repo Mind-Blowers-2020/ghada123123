@@ -16,8 +16,12 @@ public class commande {
     private String nom;
 
     private String date;
-
+    
+    private int total ;
+    
     private int quantite;
+    
+    private int id_produit ;
 
     public commande(String nom, int quantite, String date) {
 this.nom=nom;
@@ -27,6 +31,9 @@ this.date=date;
 
     public commande() {
     }
+
+  
+   
 
     public int getId() {
         return id;
@@ -72,6 +79,36 @@ this.date=date;
         this.quantite = quantite;
     }
 
+    public int getId_produit() {
+        return id_produit;
+    }
+
+    public void setId_produit(int id_produit) {
+        this.id_produit = id_produit;
+    }
+
+   
+    public commande(int id, String nom, String date, int quantite, int total) {
+        this.id = id;
+        this.nom = nom;
+        this.date = date;
+        this.quantite = quantite;
+        this.total=total;
+               
+
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+ 
+
+    
    
     
 }
